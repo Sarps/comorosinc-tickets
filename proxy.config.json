@@ -1,0 +1,8 @@
+{
+    "/uat/*": {
+      "target": "https://garageloungebar.com/",
+      "secure": false,
+      "changeOrigin": true,
+      "pathRewrite": { "^/uat": "" }
+    }
+  }
