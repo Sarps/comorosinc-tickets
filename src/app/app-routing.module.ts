@@ -10,6 +10,7 @@ const routes: Routes = [
   {path: 'success', component: SuccessComponent},
   {path: 'cancelled', component: CancelComponent},
   {path: 'ticket/:uuid', component: TicketDataComponent},
+  {path: '**', redirectTo: '/tickets', pathMatch: 'full'}
 ];
 
 @NgModule({

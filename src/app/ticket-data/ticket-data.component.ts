@@ -3,6 +3,8 @@ import {ApiServiceService} from '../services/api-service.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {NgxSpinnerService} from 'ngx-spinner';
+import {error} from 'protractor';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-ticket-data',
@@ -63,9 +65,16 @@ export class TicketDataComponent implements OnInit {
     console.log(this.myFormGroup.value)
     this.spinner.show('processTicket');
     this.api.addRequest(this.myFormGroup.value).subscribe((res: any) => {
-      console.log(res)
-      window.location.href = res.results.url;
-    })
+      if(res.success){
+        window.location.href = res.results.url;
+      }
+      else{
+        this.spinner.hide('processTicket');
+      }
+
+    }, (error: HttpErrorResponse) => {
+      this.spinner.hide('processTicket');
+    });
   }
 
   getData(id: string): void{

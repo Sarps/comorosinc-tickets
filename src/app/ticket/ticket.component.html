@@ -12,12 +12,14 @@
           <div fxLayout="row" fxLayout.xs="column"  fxLayoutGap.xs="15px">
             <div fxFlex="33" fxLayout="column" fxLayoutGap="15px " fxLayoutGap.xs="8px">
               <span><b>Venue</b></span>
-              <span>Placeholder Venue</span>
+              <span *ngIf="!data['venue']">Placeholder Venue</span>
+              <span *ngIf="data['venue']">{{data['venue']}}</span>
             </div>
 
             <div fxFlex="33" fxLayout="column" fxLayoutGap="15px" fxLayoutGap.xs="8px">
               <span><b>Date</b></span>
-              <span>Placeholder Date</span>
+              <span *ngIf="!data['eventDate']">Placeholder Date</span>
+              <span *ngIf="data['eventDate']">{{data['eventDate'] | date: 'd-MMM-y'}}</span>
             </div>
 
             <div fxFlex="33" fxLayout="column" fxLayoutGap="15px" fxLayoutGap.xs="8px">
@@ -28,7 +30,8 @@
           </div>
         </div>
         <div fxFlex="35" fxFlex.xs="100" >
-          <img src="https://comorosinc.com/events-flyers/dream-ghost.png" class="flyer-img">
+          <img  *ngIf="!data['flyerImage']" src="https://comorosinc.com/events-flyers/dream-ghost.png" class="flyer-img">
+          <img *ngIf="data['flyerImage']" [src]="data['flyerImage']" class="flyer-img">
         </div>
       </div>
     </div>
