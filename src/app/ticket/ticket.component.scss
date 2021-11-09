@@ -1,0 +1,64 @@
+.content{
+  margin-top: 65px;
+}
+
+.main{
+  padding-left: 25%;
+  padding-right: 25%;
+  padding-top: 5%;
+
+
+  @media screen and (max-width: 600px) {
+    padding-left: 8%;
+    padding-right: 8%;
+    padding-top: 3%;
+  }
+
+  .ticket-card{
+    background-color: #efefef;
+    border-radius: 3px;
+    margin-bottom: 15px;
+
+    @media screen and (max-width: 600px) {
+      .tickets-grid {
+        flex-direction: column-reverse !important;
+      }
+    }
+
+    .details{
+      padding: 10px;
+    }
+
+    .flyer-img{
+      background-color: #000000;
+      height: 220px;
+      margin-left: auto;
+      display: block;
+
+      @media screen and (max-width: 600px) {
+        margin-right: auto;
+      }
+
+    }
+
+    .ticket-btn{
+      background-color: black;
+      color: #ffffff;
+      border: none;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .event-name{
+      font-weight: bolder;
+      font-size: 25px;
+      line-height: 10px;
+    }
+
+    span{
+      font-size: 14px;
+    }
+  }
+}

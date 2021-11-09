@@ -7,8 +7,11 @@ import {HttpHeaders, HttpClient} from '@angular/common/http';
 })
 export class ApiServiceService {
 
-  private baseURL = 'https://comorosinc.com/TwoAmInTortuga/';
-  private addreqUrl = this.baseURL + 'save.php';
+  private baseURL = '/app/';
+  private addreqUrl = this.baseURL + 'api/v1/ticket/request';
+
+  private getEventsUrl = this.baseURL + 'api/v1/events';
+  private getEventDataUrl = this.baseURL + 'api/v1/events/';
 
 
 
@@ -32,6 +35,13 @@ export class ApiServiceService {
 
   addRequest(data: any): any{
     return this.http.post(this.addreqUrl, data, this.requestHeaders);
+  }
+
+  getEvents(): any{
+    return this.http.get(this.getEventsUrl, this.requestHeaders);
+  }
+  getEventsData(data: string): any{
+    return this.http.get(this.getEventDataUrl + data, this.requestHeaders);
   }
 
 

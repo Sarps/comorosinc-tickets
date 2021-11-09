@@ -1,8 +1,8 @@
 {
-    "/uat/*": {
-      "target": "https://garageloungebar.com/",
+    "/app/*": {
+      "target": "http://comorosinc.herokuapp.com/",
       "secure": false,
       "changeOrigin": true,
-      "pathRewrite": { "^/uat": "" }
+      "pathRewrite": { "^/app": "" }
     }
   }

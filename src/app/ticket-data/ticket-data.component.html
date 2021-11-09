@@ -1,0 +1,89 @@
+<div class="content" *ngIf="loaded">
+  <div class="hero-img" fxLayout="column" fxLayoutAlign="center center"  [ngStyle]="{'background-image': 'linear-gradient(0deg, rgba(3, 3, 3, 0.7), rgba(3, 3, 3, 0.7)),url(' + bgOne + ') '}">
+      <h1 style="color: white">{{eventData.event.name}}</h1>
+      <p style="color: white; font-size: 16px;">Event Venue</p>
+      <p style="color: white;font-size: 16px;">Event Date</p>
+  </div>
+  <div class="main">
+    <div fxLayout="row" fxLayout.xs="column">
+      <div fxFlex="42.5">
+        <table>
+          <tr>
+            <th>Ticket Type</th>
+            <th>Price</th>
+          </tr>
+          <tr *ngFor="let data of eventData.event.prices">
+            <td>{{data['name']}}</td>
+            <td>{{data['amount'] | currency: 'USD'}}</td>
+          </tr>
+        </table>
+      </div>
+      <div fxFlex="5"></div>
+      <div fxFlex="42.5" class="forms" [formGroup]="myFormGroup">
+        <h2>Fill in your details</h2>
+        <div fxLayout="row" fxLayoutGap="2%">
+          <div fxFlex="50" fxLayout="column">
+            <div>
+              <p>First Name</p>
+              <input type="text" name="firstName"  formControlName="firstName" required>
+            </div>
+
+            <div>
+              <p>Phone</p>
+              <input type="text" name="phone" formControlName="mobile" required>
+            </div>
+
+            <div>
+              <p>Ticket Type</p>
+              <select (change)="getTotal()" formControlName="ticket_type"   required>
+                <option *ngFor="let data of eventData.event.prices" value="{{data['name']}}">{{data['name']}}</option>
+              </select>
+            </div>
+
+
+
+          </div>
+
+          <div fxFlex="50">
+            <div>
+              <p>Last Name</p>
+              <input name="lastName" formControlName="lastName"  type="text" required>
+            </div>
+            <div>
+              <p>Email</p>
+              <input name="email" formControlName="email"  type="text" required>
+            </div>
+
+            <div>
+              <p>Number of Tickets</p>
+              <select (change)="getTotal()"  formControlName="quantity" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+
+
+          </div>
+
+        </div>
+
+        <h1>Total: {{total | currency: 'USD'}}</h1>
+
+        <button class="ticket-btn" [disabled]="!myFormGroup.valid" (click)="submit()">SUBMIT</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ngx-spinner name="querySpinner" [fullScreen]="true" bdColor="rgba(255,255,255,255)"   color="#000" size="medium" type="ball-spin-clockwise" >
+  <p style="color: #000; text-align: center">Fetching event details...</p>
+</ngx-spinner>
+
+
+<ngx-spinner name="processTicket" [fullScreen]="true" bdColor="rgba(255,255,255,255)"   color="#000" size="medium" type="ball-spin-clockwise" >
+  <p style="color: #000; text-align: center">Processing your ticket request...</p>
+</ngx-spinner>

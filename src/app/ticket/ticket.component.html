@@ -1,0 +1,41 @@
+<div class="content">
+  <div class="main" *ngIf="loaded">
+    <h1 style="text-align: center; padding-bottom: 10px">Upcoming Events</h1>
+    <div class="ticket-card" *ngFor="let data of events">
+      <div fxLayout="row" class="tickets-grid">
+        <div fxFlex="65" fxFlex.xs="100" class="details" fxLayout="column" fxLayoutAlign="space-evenly none" >
+          <div>
+            <p class="event-name">{{data['name']}}</p>
+            <hr>
+          </div>
+
+          <div fxLayout="row" fxLayout.xs="column"  fxLayoutGap.xs="15px">
+            <div fxFlex="33" fxLayout="column" fxLayoutGap="15px " fxLayoutGap.xs="8px">
+              <span><b>Venue</b></span>
+              <span>Placeholder Venue</span>
+            </div>
+
+            <div fxFlex="33" fxLayout="column" fxLayoutGap="15px" fxLayoutGap.xs="8px">
+              <span><b>Date</b></span>
+              <span>Placeholder Date</span>
+            </div>
+
+            <div fxFlex="33" fxLayout="column" fxLayoutGap="15px" fxLayoutGap.xs="8px">
+              <button class="ticket-btn" routerLink="/ticket/{{data['_id']}}">
+                GET TICKETS
+              </button>
+            </div>
+          </div>
+        </div>
+        <div fxFlex="35" fxFlex.xs="100" >
+          <img src="https://comorosinc.com/events-flyers/dream-ghost.png" class="flyer-img">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ngx-spinner name="querySpinner" [fullScreen]="true" bdColor="rgba(255,255,255,255)"   color="#000" size="medium" type="ball-spin-clockwise" >
+  <p style="color: #000; text-align: center">Loading Events..</p>
+</ngx-spinner>
