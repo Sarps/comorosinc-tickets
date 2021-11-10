@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpHeaders, HttpClient} from '@angular/common/http';
+import {environment} from '../../environments/environment';
 
 
 @Injectable({
@@ -7,7 +8,7 @@ import {HttpHeaders, HttpClient} from '@angular/common/http';
 })
 export class ApiServiceService {
 
-  private baseURL = '/app/';
+  private baseURL = environment.apiBaseUrl;
   private addreqUrl = this.baseURL + 'api/v1/ticket/request';
 
   private getEventsUrl = this.baseURL + 'api/v1/events';
